@@ -35,7 +35,7 @@ class RapatController extends Controller
      */
     public function create()
     {
-        return view('page.kantor.tambah-notulen');
+        return view('pages.kantor.tambah-notulen');
     }
 
     /**
@@ -48,6 +48,10 @@ class RapatController extends Controller
     {
         $this->validate($request,[
             'nama' => 'nullable',
+            'kepala' => 'nullable',
+            'tanggal' => 'nullable',
+            'lokasi' => 'nullable',
+            'keterangan' => 'nullable',
             'title' => 'nullable',
             'file' => 'required|file|max:100000',
             ]);
@@ -62,8 +66,12 @@ class RapatController extends Controller
 
         $data = new rapat;
         $data->nama = $request->nama;
+        $data->kepala = $request->kepala;
+        $data->tanggal = $request->tanggal;
+        $data->lokasi = $request->lokasi;
         $data->title = $request->title ?? $uploadedFile->getClientOriginalName();
         $data->filename = $path;
+        $data->keterangan = $request->keterangan;
 
         $data->save();
         return redirect('/rapat')->with('message','Tambah Notulen Berhasil');
@@ -90,7 +98,7 @@ class RapatController extends Controller
     public function edit($id)
     {
         $data = rapat::find($id);
-        // return view('pages.kantor.edit-rapat')->with('list', $data);
+        return view('pages.kantor.edit-notulen')->with('list', $data);
     }
 
     /**
@@ -104,11 +112,21 @@ class RapatController extends Controller
     {
         $this->validate($request,[
             'nama' => 'required',
+            'kepala' => 'nullable',
+            'tanggal' => 'nullable',
+            'lokasi' => 'nullable',
+            'keterangan' => 'nullable',
+            'title' => 'nullable',
             'file' => 'required',
             ]);
         $data = rapat::find($id);
         $data->nama = $request->nama;
-        $data->file = $request->file;
+        $data->kepala = $request->kepala;
+        $data->tanggal = $request->tanggal;
+        $data->lokasi = $request->lokasi;
+        $data->title = $request->title ?? $uploadedFile->getClientOriginalName();
+        $data->filename = $path;
+        $data->keterangan = $request->keterangan;
 
         $data->save();
         return redirect('/rapat')->with('message','Perubahan Notulen Berhasil');

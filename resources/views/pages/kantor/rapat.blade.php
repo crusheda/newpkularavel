@@ -33,6 +33,10 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <a href="{{ route('rapat.create') }}" class="btn btn-info text-white">
+                                    <i class="lnr lnr-printer">  </i>Tambah Notulen
+                                </a>
+                                <hr>
                                 <div class="data-table-list">
                                     <div class="table-responsive">
                                         <table id="data-table-basic" class="table table-striped">
@@ -54,8 +58,8 @@
                                                 @foreach($list['show'] as $item)
                                                 <tr>
                                                     <td>
-                                                        <a onclick="window.location.href='{{ route('rapat.show', $item->id) }}'" class="btn btn-info btn-sm">
-                                                            <i class="lnr lnr-download"></i>
+                                                        <a onclick="window.location.href='{{ route('rapat.show', $item->id) }}'" class="btn btn-success btn-sm text-white">
+                                                            <i class="lnr lnr-download"></i>Unduh
                                                         </a>
                                                     </td>
                                                     <td>{{ $item->nama }}</td>
@@ -67,12 +71,12 @@
                                                     <td>{{ $item->created_at->diffForHumans() }}</td>
                                                     <td>
                                                         <form action="{{ route('rapat.destroy', $item->id) }}" method="POST">
-                                                            <a class="btn btn-warning btn-sm" onclick="window.location.href='{{ route('rapat.update', $item->id) }}'">
-                                                                <i class="lnr lnr-pencil"></i>
+                                                            <a class="btn btn-warning btn-sm" onclick="window.location.href='{{ route('rapat.edit', $item->id) }}'">
+                                                                <i class="lnr lnr-pencil"></i>Edit
                                                             </a>
                                                             @method('DELETE')
                                                             @csrf
-                                                            <button class="btn btn-danger btn-sm"><i class="lnr lnr-trash"></i></button>
+                                                            <button class="btn btn-danger btn-sm"><i class="lnr lnr-trash"></i>Hapus</button>
                                                         </form>
                                                     </td>
                                                 </tr>

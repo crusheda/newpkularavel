@@ -8,10 +8,11 @@
         {{-- CSRF Token --}}
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>@hasSection('template_title')@yield('template_title') | @endif {{ config('app.name', Lang::get('titles.app')) }}</title>
+        <title>@hasSection('template_title')@yield('template_title') | @endif SIMRS</title>
         <meta name="description" content="">
         <meta name="author" content="Jeremy Kenedy">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/pku_ico.png') }}">
         <!-- Data Table CSS
         ============================================ -->
         <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
