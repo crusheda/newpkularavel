@@ -9,7 +9,7 @@
 
 @endphp
 
-<div class="card">
+<div class="card" style="width: 100%">
     <div class="card-header @role('admin', true) bg-secondary text-white @endrole">
 
         Welcome {{ Auth::user()->name }}

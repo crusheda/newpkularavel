@@ -47,13 +47,24 @@
                         <label for="keterangan">Keterangan :</label>
                         <textarea class="form-control" name="keterangan" id="keterangan" placeholder="">{{ $list->keterangan }}</textarea>
                         <br>
-                            <label>Unggah File: </label>
-                            <input type="file" name="file" value="{{ $list->title }}">
-                            <span class="help-block text-danger">{{ $errors->first('file') }}</span>
-                            <br>
-                            <label>File Lama : {{ Storage::url($list->title) }}</label>
-                        <br>
-                        <button class="btn btn-primary text-white pull-right" id="submit">Submit</button>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <p>Undangan</p>
+                                <p>Materi</p>
+                                <p>Absensi</p>
+                                <p>Notulen</p>
+                            </div>
+                            <div class="col-md-5">
+                                <p>: {{ $list->title1 ." (". Storage::size($list->filename1) ." bytes)" }}</p>
+                                <p>: {{ $list->title2 ." (". Storage::size($list->filename2) ." bytes)" }}</p>
+                                <p>: {{ $list->title3 ." (". Storage::size($list->filename3) ." bytes)" }}</p>
+                                <p>: {{ $list->title4 ." (". Storage::size($list->filename4) ." bytes)" }}</p>
+                            </div>
+                            <div class="col-md-5">
+
+                            </div>
+                        </div>
+                        <button class="btn btn-primary text-white btn-block" id="submit">Submit</button>
                         {{ Form::close() }}
                     {{-- </form> --}}
                 @endrole

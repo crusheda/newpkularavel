@@ -20,6 +20,10 @@ Auth::routes();
 
 // Kantor Route
     Route::resource('/rapat', 'rapatController');
+    Route::get('/rapat/show/{id}', 'rapatController@show');
+    Route::get('/rapat/show2/{id}', 'rapatController@show2');
+    Route::get('/rapat/show3/{id}', 'rapatController@show3');
+    Route::get('/rapat/show4/{id}', 'rapatController@show4');
 
 //Config Laravel
 

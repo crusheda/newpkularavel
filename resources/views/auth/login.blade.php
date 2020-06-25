@@ -55,17 +55,17 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                {{-- <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('auth.forgot') }}
-                                </a>
+                                </a> --}}
                             </div>
                         </div>
 
-                        <p class="text-center mb-3">
+                        {{-- <p class="text-center mb-3">
                             Or Login with
                         </p>
 
-                        @include('partials.socials-icons')
+                        @include('partials.socials-icons') --}}
 
                     </form>
                 </div>

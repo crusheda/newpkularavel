@@ -43,13 +43,12 @@
                                             <thead>
                                                 <tr>
                                                     <th>FILE</th>
-                                                    <th>NAME</th>
-                                                    <th>TGL</th>
-                                                    <th>LEADER</th>
-                                                    <th>LOCATION</th>
-                                                    <th>NOTE</th>
-                                                    <th>SUBJECT</th>
-                                                    <th>TIME</th>
+                                                    <th>KEGIATAN</th>
+                                                    <th>KETUA</th>
+                                                    <th>WAKTU</th>
+                                                    <th>LOKASI</th>
+                                                    <th>KET</th>
+                                                    <th>UPDATE</th>
                                                     <th>ACTION</th>
                                                 </tr>
                                             </thead>
@@ -58,16 +57,13 @@
                                                 @foreach($list['show'] as $item)
                                                 <tr>
                                                     <td>
-                                                        <a onclick="window.location.href='{{ route('rapat.show', $item->id) }}'" class="btn btn-success btn-sm text-white">
-                                                            <i class="lnr lnr-download"></i>Unduh
-                                                        </a>
+                                                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#lihatFile">Unduh</button>
                                                     </td>
                                                     <td>{{ $item->nama }}</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td>{{ $item->title }}</td>
+                                                    <td>{{ $item->kepala }}</td>
+                                                    <td>{{ $item->tanggal }}</td>
+                                                    <td>{{ $item->lokasi }}</td>
+                                                    <td>{{ $item->keterangan }}</td>
                                                     <td>{{ $item->created_at->diffForHumans() }}</td>
                                                     <td>
                                                         <form action="{{ route('rapat.destroy', $item->id) }}" method="POST">
@@ -90,13 +86,12 @@
                                             <tfoot>
                                                 <tr>
                                                     <th>FILE</th>
-                                                    <th>NAME</th>
-                                                    <th>TGL</th>
-                                                    <th>LEADER</th>
-                                                    <th>LOCATION</th>
-                                                    <th>NOTE</th>
-                                                    <th>SUBJECT</th>
-                                                    <th>TIME</th>
+                                                    <th>KEGIATAN</th>
+                                                    <th>KETUA</th>
+                                                    <th>WAKTU</th>
+                                                    <th>LOKASI</th>
+                                                    <th>KET</th>
+                                                    <th>UPDATE</th>
                                                     <th>ACTION</th>
                                                 </tr>
                                             </tfoot>
@@ -115,6 +110,31 @@
                 @endrole
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="lihatFile" role="dialog" aria-labelledby="confirmFormLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            {{ $item->nama }}'s Files
+          </h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>
+              Download File: <p></p>
+            <a onclick="window.location.href='{{ url('rapat/show/'. $item->id) }}'" class="btn btn-success btn-sm text-white"><i class="fa fa-download"></i></a>   {{ $item->title1 }} ({{Storage::size($item->filename1)}} bytes)<p></p>
+            <a onclick="window.location.href='{{ url('rapat/show2/'. $item->id) }}'" class="btn btn-success btn-sm text-white"><i class="fa fa-download"></i></a>   {{ $item->title2 }} ({{Storage::size($item->filename2)}} bytes)<p></p>
+            <a onclick="window.location.href='{{ url('rapat/show3/'. $item->id) }}'" class="btn btn-success btn-sm text-white"><i class="fa fa-download"></i></a>   {{ $item->title3 }} ({{Storage::size($item->filename3)}} bytes)<p></p>
+            <a onclick="window.location.href='{{ url('rapat/show4/'. $item->id) }}'" class="btn btn-success btn-sm text-white"><i class="fa fa-download"></i></a>   {{ $item->title4 }} ({{Storage::size($item->filename4)}} bytes)<p></p>
+          </p>
+        </div>
+        <div class="modal-footer">
+            <p class="pull-left"><td>{{ $item->updated_at->diffForHumans() }}</td></p>
+        </div>
+      </div>
     </div>
 </div>
 

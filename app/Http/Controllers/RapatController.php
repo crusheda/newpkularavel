@@ -47,30 +47,47 @@ class RapatController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nama' => 'nullable',
-            'kepala' => 'nullable',
-            'tanggal' => 'nullable',
-            'lokasi' => 'nullable',
             'keterangan' => 'nullable',
-            'title' => 'nullable',
-            'file' => 'required|file|max:100000',
+            'title1' => 'nullable',
+            'title2' => 'nullable',
+            'title3' => 'nullable',
+            'title4' => 'nullable',
+            'file1' => 'required|file|max:100000',
+            'file2' => 'required|file|max:100000',
+            'file3' => 'required|file|max:100000',
+            'file4' => 'required|file|max:100000',
             ]);
 
         // tampung berkas yang sudah diunggah ke variabel baru
         // 'file' merupakan nama input yang ada pada form
-        $uploadedFile = $request->file('file');        
+        $uploadedFile1 = $request->file('file1');
+        $uploadedFile2 = $request->file('file2');
+        $uploadedFile3 = $request->file('file3');
+        $uploadedFile4 = $request->file('file4');        
 
         // simpan berkas yang diunggah ke sub-direktori 'public/files'
         // direktori 'files' otomatis akan dibuat jika belum ada
-        $path = $uploadedFile->store('public/files');
+        $path1 = $uploadedFile1->store('public/files/notulen/undangan');
+        $path2 = $uploadedFile2->store('public/files/notulen/materi');
+        $path3 = $uploadedFile3->store('public/files/notulen/absensi');
+        $path4 = $uploadedFile4->store('public/files/notulen/notulen');
 
         $data = new rapat;
         $data->nama = $request->nama;
         $data->kepala = $request->kepala;
         $data->tanggal = $request->tanggal;
         $data->lokasi = $request->lokasi;
-        $data->title = $request->title ?? $uploadedFile->getClientOriginalName();
-        $data->filename = $path;
+
+            $data->title1 = $request->title1 ?? $uploadedFile1->getClientOriginalName();
+            $data->title2 = $request->title2 ?? $uploadedFile2->getClientOriginalName();
+            $data->title3 = $request->title3 ?? $uploadedFile3->getClientOriginalName();
+            $data->title4 = $request->title4 ?? $uploadedFile4->getClientOriginalName();
+            
+            $data->filename1 = $path1;
+            $data->filename2 = $path2;
+            $data->filename3 = $path3;
+            $data->filename4 = $path4;
+
         $data->keterangan = $request->keterangan;
 
         $data->save();
@@ -86,7 +103,25 @@ class RapatController extends Controller
     public function show($id)
     {
         $data = rapat::find($id);
-        return Storage::download($data->filename, $data->title);
+        return Storage::download($data->filename1, $data->title1);
+    }
+
+    public function show2($id)
+    {
+        $data = rapat::find($id);
+        return Storage::download($data->filename2, $data->title2);
+    }
+
+    public function show3($id)
+    {
+        $data = rapat::find($id);
+        return Storage::download($data->filename3, $data->title3);
+    }
+
+    public function show4($id)
+    {
+        $data = rapat::find($id);
+        return Storage::download($data->filename4, $data->title4);
     }
 
     /**
@@ -116,16 +151,12 @@ class RapatController extends Controller
             'tanggal' => 'nullable',
             'lokasi' => 'nullable',
             'keterangan' => 'nullable',
-            'title' => 'nullable',
-            'file' => 'required',
             ]);
         $data = rapat::find($id);
         $data->nama = $request->nama;
         $data->kepala = $request->kepala;
         $data->tanggal = $request->tanggal;
         $data->lokasi = $request->lokasi;
-        $data->title = $request->title ?? $uploadedFile->getClientOriginalName();
-        $data->filename = $path;
         $data->keterangan = $request->keterangan;
 
         $data->save();

@@ -13,6 +13,7 @@
         <meta name="author" content="Jeremy Kenedy">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('img/pku_ico.png') }}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <!-- Data Table CSS
         ============================================ -->
         <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
