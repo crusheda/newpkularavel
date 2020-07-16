@@ -21,6 +21,9 @@
                 @role('kantor')
                     @include('pages.kantor.home')
                 @endrole
+                @role('it')
+                    @include('pages.it.home')
+                @endrole
             </div>
         </div>
     </div>

@@ -94,13 +94,54 @@
                     </div>
                 </li>
                 @endrole
+                @role('kebidanan')
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        SKL
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('/skl/tambah') }}">
+                            Buat SKL
+                        </a>
+                        {{-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item {{ Request::is('users', 'users/' . Auth::user()->id, 'users/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ url('/users') }}">
+                            {!! trans('titles.adminUserList') !!}
+                        </a> --}}
+                    </div>
+                </li>
+                @endrole
+                @role('it')
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Indikator Mutu
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('/imut/pilar') }}">
+                            Pilar
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/imut/printer') }}">
+                            Printer
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/imut/cpu') }}">
+                            CPU
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/imut/jaringan') }}">
+                            Jaringan
+                        </a>
+                        {{-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item {{ Request::is('users', 'users/' . Auth::user()->id, 'users/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ url('/users') }}">
+                            {!! trans('titles.adminUserList') !!}
+                        </a> --}}
+                    </div>
+                </li>
+                @endrole
             </ul>
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ml-auto">
                 {{-- Authentication Links --}}
                 @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ trans('titles.login') }}</a></li>
-                    <li><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li>
+                    {{-- <li><a class="nav-link" href="{{ route('register') }}">{{ trans('titles.register') }}</a></li> --}}
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -199,6 +240,31 @@
                             </a>
                         </div>
                     </li>
+                @endrole
+                @role('it')
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Indikator Mutu
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ url('/imut/pilar') }}">
+                            Pilar
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/imut/printer') }}">
+                            Printer
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/imut/cpu') }}">
+                            CPU
+                        </a>
+                        <a class="dropdown-item" href="{{ url('/imut/jaringan') }}">
+                            Jaringan
+                        </a>
+                        {{-- <div class="dropdown-divider"></div>
+                        <a class="dropdown-item {{ Request::is('users', 'users/' . Auth::user()->id, 'users/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ url('/users') }}">
+                            {!! trans('titles.adminUserList') !!}
+                        </a> --}}
+                    </div>
+                </li>
                 @endrole
             </ul>
             {{-- Right Side Of Navbar --}}

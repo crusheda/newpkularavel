@@ -25,6 +25,24 @@ Auth::routes();
     Route::get('/rapat/show3/{id}', 'rapatController@show3');
     Route::get('/rapat/show4/{id}', 'rapatController@show4');
 
+// Kebidanan Route
+Route::get('/skl/tambah', 'sklController@index');
+
+// IT Route
+    // Imut
+        // Pilar
+        Route::post('/imut/pilar/{id}', 'it\imut\pilarController@pilarClear')->name('pilar.selesai');
+        Route::resource('/imut/pilar', 'it\imut\pilarController');
+        // CPU
+        Route::post('/imut/cpu/{id}', 'it\imut\cpuController@cpuClear')->name('cpu.selesai');
+        Route::resource('/imut/cpu', 'it\imut\cpuController');
+        // Jaringan
+        Route::post('/imut/jaringan/{id}', 'it\imut\jaringanController@jaringanClear')->name('jaringan.selesai');
+        Route::resource('/imut/jaringan', 'it\imut\jaringanController');
+        // Printer
+        Route::post('/imut/printer/{id}', 'it\imut\printerController@printerClear')->name('printer.selesai');
+        Route::resource('/imut/printer', 'it\imut\printerController');
+
 //Config Laravel
 
 // Homepage Route

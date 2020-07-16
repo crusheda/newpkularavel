@@ -186,4 +186,18 @@ class RapatController extends Controller
 
         return response()->file($pathToFile, $headers);
     }
+
+    public function apifile()
+    {
+        $show = rapat::all();
+        // $total = karyawan::count();
+        // $show = rapat::orderBy('created_at', 'DESC')->paginate(30);
+
+        $data = [
+            // 'count' => $total,
+            'show' => $show
+        ];
+
+        return response()->json($show, 200);
+    }
 }
