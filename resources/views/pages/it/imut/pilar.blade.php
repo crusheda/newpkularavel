@@ -150,7 +150,7 @@
             <input type="text" name="namapi" id="namapi" value="{{ $item->namapi }}" class="form-control" placeholder="">
             <br>
             <label for="namapi">Pelaksana :</label>
-            <input type="text" name="nama" id="nama" value="{{ $item->nama }}" class="form-control" placeholder="" disabled>
+            <input type="text" name="nama" id="nama" value="{{ $item->nama }}" class="form-control" placeholder="{{ $item->nama }}" disabled>
             <br>
             <label for="jamawal">Jam Awal :</label>
             <input type="datetime-local" name="jamawal" id="jamawal" value="<?php echo strftime('%Y-%m-%dT%H:%M:%S', strtotime($item->jamawal)); ?>" class="form-control" placeholder="">

@@ -97,7 +97,7 @@ class jaringanController extends Controller
     {
         $data = imutjaringan::find($id);
         $data->namapi = $request->namapi;
-        $data->nama = $request->nama;
+        // $data->nama = $request->nama;
         $data->jamawal = $request->jamawal;
         $data->jamselesai = $request->jamselesai;
         $data->keterangan = $request->keterangan;

@@ -97,11 +97,12 @@ class pilarController extends Controller
     {
         $data = imutpilar::find($id);
         $data->namapi = $request->namapi;
-        $data->nama = $request->nama;
+        // $data->nama = $request->nama;
         $data->jamawal = $request->jamawal;
         $data->jamselesai = $request->jamselesai;
         $data->keterangan = $request->keterangan;
         $data->save();
+        
 
         return redirect('/imut/pilar')->with('message','Ubah Imut Pilar Berhasil');
     }
