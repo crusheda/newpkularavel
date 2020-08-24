@@ -16,7 +16,7 @@
         {{-- Rumah Sakit PKU Muhammadiyah Sukoharjo --}}
         <img src="{{ asset('assets/img/logo_pku_big.png') }}" style="height:32px" alt="PKU Logo" class="img-responsive logo">
     </a>
-    <div class="container">
+    {{-- <div class="container"> --}}
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             <span class="sr-only">{!! trans('titles.toggleNav') !!}</span>
@@ -85,7 +85,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url('/rapat') }}">
-                            Notulen
+                            Upload File
                         </a>
                         {{-- <div class="dropdown-divider"></div>
                         <a class="dropdown-item {{ Request::is('users', 'users/' . Auth::user()->id, 'users/' . Auth::user()->id . '/edit') ? 'active' : null }}" href="{{ url('/users') }}">
@@ -135,6 +135,21 @@
                     </div>
                 </li>
                 @endrole
+                @if (Auth::User())
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Pengadaan Barang
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ url('/pengadaan/rutin') }}">
+                                Rutin
+                            </a>
+                            <a class="dropdown-item" href="{{ url('/pengadaan/nonrutin') }}">
+                                Non Rutin
+                            </a>
+                        </div>
+                    </li>
+                @endif
             </ul>
             {{-- Right Side Of Navbar --}}
             <ul class="navbar-nav ml-auto">
@@ -170,7 +185,7 @@
                 @endguest
             </ul>
         </div>
-    </div>
+    {{-- </div> --}}
 </nav>
 
 {{-- FADE NAVBAR --}}

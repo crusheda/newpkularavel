@@ -42,6 +42,12 @@ Route::get('/skl/tambah', 'sklController@index');
         // Printer
         Route::post('/imut/printer/{id}', 'it\imut\printerController@printerClear')->name('printer.selesai');
         Route::resource('/imut/printer', 'it\imut\printerController');
+        
+        // Pengadaan
+        Route::get('pengadaan/rutin/cetak/{token}','it\pengadaan\rutinController@generatePDF')->name('rutin.cetak');
+        Route::get('pengadaan/nonrutin/cetak/{token}','it\pengadaan\nonrutinController@generatePDF')->name('nonrutin.cetak');
+        Route::resource('pengadaan/rutin', 'it\pengadaan\rutinController');
+        Route::resource('pengadaan/nonrutin', 'it\pengadaan\nonrutinController');
 
 //Config Laravel
 

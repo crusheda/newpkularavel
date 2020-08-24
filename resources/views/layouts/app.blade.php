@@ -83,16 +83,15 @@
 
         {{-- Scripts --}}
         <script src="{{ mix('/js/app.js') }}"></script>
-
-        @if(config('settings.googleMapsAPIStatus'))
-            {!! HTML::script('//maps.googleapis.com/maps/api/js?key='.config("settings.googleMapsAPIKey").'&libraries=places&dummy=.js', array('type' => 'text/javascript')) !!}
-        @endif
+ 
+        {{-- @if(config('settings.googleMapsAPIStatus'))  --}}
+        {{--    {!! HTML::script('//maps.googleapis.com/maps/api/js?key='.config("settings.googleMapsAPIKey").'&libraries=places&dummy=.js', array('type' => 'text/javascript')) !!}  --}}
+        {{-- @endif   --}}
 
         @yield('footer_scripts')
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <!-- Data Table JS
         ============================================ -->
         <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
