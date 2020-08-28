@@ -46,6 +46,7 @@ Route::get('/skl/tambah', 'sklController@index');
         // Pengadaan
         Route::get('pengadaan/rutin/cetak/{token}','it\pengadaan\rutinController@generatePDF')->name('rutin.cetak');
         Route::get('pengadaan/nonrutin/cetak/{token}','it\pengadaan\nonrutinController@generatePDF')->name('nonrutin.cetak');
+        Route::get('pengadaan/nonrutin/{token}','it\pengadaan\nonrutinController@getbyapi')->name('api.nonrutin');
         Route::resource('pengadaan/rutin', 'it\pengadaan\rutinController');
         Route::resource('pengadaan/nonrutin', 'it\pengadaan\nonrutinController');
 

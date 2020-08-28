@@ -52,7 +52,7 @@
                                     <td>{{ $item->pemohon }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#lihatData{{ $item->token }}">Lihat</button>
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#lihatData" onclick="getdetailsu({{ $item->token }})">Lihat</button>
                                         <a type="button" class="btn btn-success btn-sm disabled" href="{{ route('nonrutin.cetak', $item->token) }}">Cetak</a>
                                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusData{{ $item->token }}">Hapus</button>
                                     </td>
@@ -121,8 +121,7 @@
 </div>
 @endforeach
 
-@foreach($list['getby'] as $item)
-<div class="modal fade bd-example-modal-lg" id="lihatData{{ $item->token }}" role="dialog" aria-labelledby="confirmFormLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-lg" id="lihatData" role="dialog" aria-labelledby="confirmFormLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -132,48 +131,47 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
-            <p>
-                <div class="table-responsive">
-                    <table id="data-table-basic" class="table table-striped">
-                            <thead>
-                                <th>UNIT</th>
-                                <th>PEMOHON</th>
-                                <th>BARANG</th>
-                                <th>JUMLAH</th>
-                                <th>SATUAN</th>
-                                <th>HARGA</th>
-                                <th>TOTAL</th>
-                                <th>KETERANGAN</th>
-                                <th>TANGGAL</th>
-                            </thead>
-                            <tbody>
-                                @if(count($list['getby']) > 0)
-                                    @foreach($item as $item)
-                                        {{-- <td>{{ $item->unit }}</td>
-                                        <td>{{ $item->pemohon }}</td>
-                                        <td>{{ $item->barang }}</td>
-                                        <td>{{ $item->jumlah }}</td>
-                                        <td>{{ $item->satuan }}</td>
-                                        <td>{{ $item->harga }}</td>
-                                        <td>{{ $item->total }}</td>
-                                        <td>{{ $item->keterangan }}</td>
-                                        <td>{{ $item->created_at }}</td> --}}
-                                    @endforeach
-                                @endif
-                            </tbody>
-                        </table>
-                    </div>
-            </p>
+            <div class="table-responsive">
+                <table id="dataku" class="table table-striped">
+                        <thead>
+                            <th>UNIT</th>
+                            <th>PEMOHON</th>
+                            {{-- <th>BARANG</th>
+                            <th>JUMLAH</th>
+                            <th>SATUAN</th>
+                            <th>HARGA</th>
+                            <th>TOTAL</th>
+                            <th>KETERANGAN</th>
+                            <th>TANGGAL</th> --}}
+                        </thead>
+                        <tbody id="detailpgd">
+                            
+                        </tbody>
+                    </table>
+                </div>
         </div>
         <div class="modal-footer">
-            @if(count($list['getby']) > 0)
-            {{-- <h5 class="pull-right">{{ $item->created_at->diffForHumans() }}</h5> --}}
-            @endif
         </div>
       </div>
     </div>
 </div>
-@endforeach
+
+<script>
+    function getdetailsu(munyuk) {
+        $("#detailpgd").children().remove();
+        $.ajax({url: "/pengadaan/nonrutin/" + munyuk , success: function(result){
+            // $("#detailpgd").html(result);
+            result.forEach(item => {
+                $("#detailpgd").append('<tr>');
+                $("#detailpgd").append('<td>'+item.unit+'</td>');
+                $("#detailpgd").append('<td>'+item.barang+'</td>');
+                $("#detailpgd").append('</tr>');
+            });
+            // console.log(result);
+            // setTimeout(function(){ alert("Hello") }, 3000);
+        }});
+    }
+</script>
 
 @endsection
 

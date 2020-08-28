@@ -142,12 +142,7 @@ class nonrutinController extends Controller
 
     public function getbyapi($token)
     {
-        $show = pengadaan::find($token);
-
-        $data = [
-            // 'count' => $total,
-            'show' => $show
-        ];
+        $show = pengadaan::where("token", "=" ,$token)->get();
 
         return response()->json($show, 200);
     }
